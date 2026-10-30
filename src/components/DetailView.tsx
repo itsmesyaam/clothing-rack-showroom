@@ -252,7 +252,7 @@ function InspectGarment({ product, color, side, D, custom }: InspectProps) {
   // The cloth dims as it turns edge-on. Faces also switch by opacity at 90°,
   // so the flip holds up where backface-visibility misbehaves with SVG filters.
   const light = useTransform(rotY, (r) => `brightness(${(1 - 0.3 * Math.abs(Math.sin((r * Math.PI) / 180))).toFixed(3)})`);
-  const frontOn = useTransform(rotY, (r) => (Math.cos((r * Math.PI) / 180) >= 0 ? 1 : 0));
+  const frontOn = useTransform<number, number>(rotY, (r) => (Math.cos((r * Math.PI) / 180) >= 0 ? 1 : 0));
   const backOn = useTransform(frontOn, (v) => 1 - v);
 
   // The garment answers a colourway change with a small swing.
